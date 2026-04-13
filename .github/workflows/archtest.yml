@@ -1,0 +1,48 @@
+name: QSE Architecture Test
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  archtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install QSE dependencies
+        run: |
+          pip install networkx python-louvain scipy numpy tree-sitter tree-sitter-java
+          
+      - name: Clone QSE scanner
+        run: |
+          git clone --depth 1 https://github.com/PiotrGry/qse-pkg.git /tmp/qse-pkg
+          
+      - name: Run qse-archtest
+        run: |
+          PYTHONPATH=/tmp/qse-pkg python3 -m qse.archtest \
+            --repo . \
+            --lang java \
+            --format markdown
+        continue-on-error: true
+        
+      - name: Run qse-archtest (JSON artifact)
+        run: |
+          PYTHONPATH=/tmp/qse-pkg python3 -m qse.archtest \
+            --repo . \
+            --lang java \
+            --format json > archtest-report.json
+        continue-on-error: true
+        
+      - name: Upload archtest report
+        uses: actions/upload-artifact@v4
+        with:
+          name: archtest-report
+          path: archtest-report.json
