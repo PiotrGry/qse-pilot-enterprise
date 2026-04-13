@@ -5,62 +5,55 @@
  */
 package com.mycompany.entapp.snowman.application.schedule;
 
-import com.mycompany.entapp.snowman.domain.model.AppInfo;
-import com.mycompany.entapp.snowman.domain.model.Client;
-import com.mycompany.entapp.snowman.domain.model.Employee;
-import com.mycompany.entapp.snowman.domain.model.Project;
-import com.mycompany.entapp.snowman.domain.model.User;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.List;
-
+/**
+ * Aggregate reporting data container.
+ * Refactored to compose domain-specific reporting segments
+ * (BusinessReportingData, HrReportingData, SystemReportingData)
+ * instead of directly aggregating all domain model types.
+ *
+ * This eliminates the god-class pattern where a single class
+ * imported and bundled every domain entity.
+ */
 public class ReportingData {
-    private List<Client> clients;
-    private List<Project> projects;
-    private List<Employee> employees;
-    private AppInfo appInfo;
-    private List<User> users;
+    private BusinessReportingData businessData;
+    private HrReportingData hrData;
+    private SystemReportingData systemData;
 
-    public List<Client> getClients() {
-        return clients;
+    public ReportingData() {
     }
 
-    public void setClients(List<Client> clients) {
-        this.clients = clients;
+    public ReportingData(BusinessReportingData businessData, HrReportingData hrData, SystemReportingData systemData) {
+        this.businessData = businessData;
+        this.hrData = hrData;
+        this.systemData = systemData;
     }
 
-    public List<Project> getProjects() {
-        return projects;
+    public BusinessReportingData getBusinessData() {
+        return businessData;
     }
 
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
+    public void setBusinessData(BusinessReportingData businessData) {
+        this.businessData = businessData;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public HrReportingData getHrData() {
+        return hrData;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setHrData(HrReportingData hrData) {
+        this.hrData = hrData;
     }
 
-    public AppInfo getAppInfo() {
-        return appInfo;
+    public SystemReportingData getSystemData() {
+        return systemData;
     }
 
-    public void setAppInfo(AppInfo appInfo) {
-        this.appInfo = appInfo;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setSystemData(SystemReportingData systemData) {
+        this.systemData = systemData;
     }
 
     @Override
@@ -76,33 +69,27 @@ public class ReportingData {
         ReportingData that = (ReportingData) o;
 
         return new EqualsBuilder()
-            .append(clients, that.clients)
-            .append(projects, that.projects)
-            .append(employees, that.employees)
-            .append(appInfo, that.appInfo)
-            .append(users, that.users)
+            .append(businessData, that.businessData)
+            .append(hrData, that.hrData)
+            .append(systemData, that.systemData)
             .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-            .append(clients)
-            .append(projects)
-            .append(employees)
-            .append(appInfo)
-            .append(users)
+            .append(businessData)
+            .append(hrData)
+            .append(systemData)
             .toHashCode();
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-            .append("clients", clients)
-            .append("projects", projects)
-            .append("employees", employees)
-            .append("appInfo", appInfo)
-            .append("users", users)
+            .append("businessData", businessData)
+            .append("hrData", hrData)
+            .append("systemData", systemData)
             .toString();
     }
 }

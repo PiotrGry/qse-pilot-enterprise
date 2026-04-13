@@ -3,7 +3,7 @@
  * | Copyright © 2018 Colin But. All rights reserved.
  * |-------------------------------------------------
  */
-package com.mycompany.entapp.snowman.domain.repository.impl;
+package com.mycompany.entapp.snowman.infrastructure.db.repository;
 
 import com.mycompany.entapp.snowman.domain.ProjectTestHelper;
 import com.mycompany.entapp.snowman.domain.model.Project;
@@ -31,7 +31,6 @@ public class ProjectRepositoryImplUTest {
 
     @Test
     public void giveProjectId_whenFindProject_thenReturnProjectWithThatProjectId() {
-
 
         Project project = ProjectTestHelper.getProject();
 
@@ -63,7 +62,5 @@ public class ProjectRepositoryImplUTest {
 
         Mockito.verify(projectDao, Mockito.times(1)).removeProject(PROJECT_ID);
     }
-
-
 
 }

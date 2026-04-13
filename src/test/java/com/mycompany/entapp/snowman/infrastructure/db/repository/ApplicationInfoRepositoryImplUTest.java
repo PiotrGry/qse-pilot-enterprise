@@ -3,11 +3,10 @@
  * | Copyright © 2018 Colin But. All rights reserved.
  * |-------------------------------------------------
  */
-package com.mycompany.entapp.snowman.domain.repository.impl;
+package com.mycompany.entapp.snowman.infrastructure.db.repository;
 
 import com.mycompany.entapp.snowman.domain.model.AppInfo;
 import com.mycompany.entapp.snowman.infrastructure.db.dao.ApplicationInfoDao;
-import com.mycompany.entapp.snowman.infrastructure.db.dao.impl.ApplicationInfoDaoImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

@@ -8,6 +8,7 @@ package com.mycompany.entapp.snowman.domain.service.impl;
 import com.mycompany.entapp.snowman.domain.exception.SnowmanException;
 import com.mycompany.entapp.snowman.domain.model.Client;
 import com.mycompany.entapp.snowman.domain.model.Project;
+import com.mycompany.entapp.snowman.domain.port.ClientProjectPort;
 import com.mycompany.entapp.snowman.domain.repository.ClientRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,9 @@ public class ClientServiceImplUTest {
 
     @Mock
     private ClientRepository clientRepository;
+
+    @Mock
+    private ClientProjectPort clientProjectPort;
 
     @InjectMocks
     private ClientServiceImpl classUnderTest = new ClientServiceImpl();

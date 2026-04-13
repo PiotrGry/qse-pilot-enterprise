@@ -3,7 +3,7 @@
  * | Copyright © 2018 Colin But. All rights reserved.
  * |-------------------------------------------------
  */
-package com.mycompany.entapp.snowman.domain.repository.impl;
+package com.mycompany.entapp.snowman.infrastructure.db.repository;
 
 import com.mycompany.entapp.snowman.domain.EmployeeTestHelper;
 import com.mycompany.entapp.snowman.domain.model.Employee;

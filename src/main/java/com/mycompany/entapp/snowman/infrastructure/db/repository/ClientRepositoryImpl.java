@@ -3,7 +3,7 @@
  * | Copyright © 2018 Colin But. All rights reserved.
  * |-------------------------------------------------
  */
-package com.mycompany.entapp.snowman.domain.repository.impl;
+package com.mycompany.entapp.snowman.infrastructure.db.repository;
 
 import com.mycompany.entapp.snowman.domain.model.Client;
 import com.mycompany.entapp.snowman.domain.repository.ClientRepository;
@@ -14,6 +14,11 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
+/**
+ * Infrastructure implementation of ClientRepository.
+ * Moved from domain.repository.impl to infrastructure.db.repository
+ * to respect the dependency rule: domain must not import infrastructure.
+ */
 @Component
 public class ClientRepositoryImpl implements ClientRepository {
 

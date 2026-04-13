@@ -3,7 +3,7 @@
  * | Copyright © 2018 Colin But. All rights reserved.
  * |-------------------------------------------------
  */
-package com.mycompany.entapp.snowman.domain.repository.impl;
+package com.mycompany.entapp.snowman.infrastructure.db.repository;
 
 import com.mycompany.entapp.snowman.domain.model.AppInfo;
 import com.mycompany.entapp.snowman.domain.repository.ApplicationInfoRepository;
@@ -18,6 +18,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Infrastructure implementation of ApplicationInfoRepository.
+ * Moved from domain.repository.impl to infrastructure.db.repository
+ * to respect the dependency rule: domain must not import infrastructure.
+ */
 @Component
 public class ApplicationInfoRepositoryImpl implements ApplicationInfoRepository {
 
